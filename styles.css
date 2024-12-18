@@ -170,16 +170,16 @@ a:hover {
 }
 
 .hero-contents {
-    display: flex; 
-    flex-direction: row;
-    justify-content: center; 
-    align-items: center;
-    gap: 20px;
+    display: flex !important; 
+    flex-direction: row !important;
+    justify-content: center !important; 
+    align-items: center !important;
+    gap: 20px !important;
 }
 
 .hero-img {
-    margin: 20px; 
-    border-radius: 30px;
+    margin: 20px !important; 
+    border-radius: 30px !important;
     width: 90% !important;
 }
 
@@ -235,11 +235,11 @@ a:hover {
     }
 
     .hero-contents {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
     }
 
     .hero-img {
-        width: 100%;
+        width: 100% !important;
     }
 
     .hero h1 {
