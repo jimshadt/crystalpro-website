@@ -223,29 +223,6 @@ a:hover {
         margin-bottom: 1.5rem;
     }
 
-    .hero .btn {
-        padding: 10px 20px;
-        /* Smaller button */
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-        /* Even smaller font size */
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-        /* Smaller font size for very small screens */
-    }
-
-    .hero .btn {
-        padding: 8px 16px;
-        /* Adjust button size further */
-        font-size: 0.8rem;
-    }
 }
 
 /* Section Container */
@@ -323,6 +300,7 @@ a:hover {
 /* Community Section */
 .community-section {
     padding-top: 150px !important;
+    padding-bottom: 150px !important;
     background-color: #16101a;
     color: #ffffff;
     text-align: center;
@@ -359,7 +337,7 @@ a:hover {
 .community-card {
     flex: 1 1 calc(20% - 20px);
     /* Ensures equal width for each card */
-    max-width: 400px;
+    /* max-width: 400px; */
     /* Set maximum width */
     height: 200px;
     /* Set fixed height */
@@ -371,7 +349,7 @@ a:hover {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -394,7 +372,11 @@ a:hover {
 
 .learn-more {
     font-size: 16px;
-    color: #b09cf1;
+    color: #000;
+    width: 100%;
+    background-color: #b09cf1;
+    border-radius: 50px;
+    padding: 15px 20px;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
