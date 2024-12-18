@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRYSTAL PRO</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CDN (optional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #FFF;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Menu Icon (Hamburger) */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Right-Side Menu */
+        .right-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .right-menu a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .right-menu a:hover {
+            color: #6A0DAD;
+        }
+
+        .navbar .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .navbar .buttons .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-size: 14px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .navbar .buttons .btn-login {
+            background-color: #FFF;
+            border: 1px solid #ccc;
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .buttons .btn-login:hover {
+            background-color: #EEE;
+        }
+
+        .navbar .buttons .btn-cta {
+            background-color: #16101a;
+            color: #FFF;
+            border: none;
+        }
+
+        .navbar .buttons .btn-cta:hover {
+            background-color: #590A8E;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .right-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #FFF;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .right-menu.active {
+                display: flex;
+            }
+
+            .right-menu a {
+                margin: 10px 0;
+                text-align: center;
+                font-size: 16px;
+            }
+
+            .navbar .buttons {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            /* Menu Icon */
+            .menu-icon {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            /* Default for large screens */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            /* Default for large screens */
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        .hero .btn:hover {
+            background: #0056b3;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 20px;
+                /* Add padding for smaller screens */
+                height: auto;
+                /* Adjust height dynamically */
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                /* Smaller font size for mobile */
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                /* Smaller font size */
+                margin-bottom: 1.5rem;
+            }
+
+            .hero .btn {
+                padding: 10px 20px;
+                /* Smaller button */
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+                /* Even smaller font size */
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                /* Smaller font size for very small screens */
+            }
+
+            .hero .btn {
+                padding: 8px 16px;
+                /* Adjust button size further */
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Section Container */
+        .expertise-section {
+            text-align: center;
+            background-color: #FFF;
+            padding: 50px 20px;
+        }
+
+        .expertise-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000;
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        /* Expertise Container */
+        .expertise-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* Individual Cards */
+        .expertise-card {
+            flex: 1 1 calc(33.33% - 20px);
+            /* Three cards in a row */
+            max-width: 400px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .expertise-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            margin-bottom: 20px;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .expertise-container {
+                flex-direction: column;
+            }
+
+            .expertise-card {
+                flex: 1 1 100%;
+            }
+
+            .expertise-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Footer */
+        /* Community Section */
+        .community-section {
+            background-color: #16101a;
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .community-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .community-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .community-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #aaa;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .community-card {
+            flex: 1 1 calc(20% - 20px);
+            /* Ensures equal width for each card */
+            max-width: 400px;
+            /* Set maximum width */
+            height: 200px;
+            /* Set fixed height */
+            background-color: #2b1b30;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .community-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon-box {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #e3b6ff;
+        }
+
+        .community-card h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .learn-more {
+            font-size: 16px;
+            color: #b09cf1;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .learn-more:hover {
+            color: #ffffff;
+        }
+
+        .all-opportunities {
+            margin-top: 40px;
+        }
+
+        .btn-opportunities {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #9b5de5;
+            color: #ffffff;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .btn-opportunities:hover {
+            background-color: #7744b6;
+        }
+
+        /* General Section Styling */
+        .ai-training-section {
+            background-color: #FDFDFD;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ai-training-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Text Section Styling */
+        .ai-training-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ai-training-text h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1E0A3C;
+            margin-bottom: 10px;
+        }
+
+        .ai-training-text p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .task-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .task-box {
+            background-color: #F2F0FF;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: #444;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .task-box.active {
+            background-color: #1E0A3C;
+            color: #FFF;
+        }
+
+        .task-box:hover {
+            background-color: #EAE4FF;
+        }
+
+        .cta p {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .btn-view-opportunities {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #1E0A3C;
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-view-opportunities:hover {
+            background-color: #6A0DAD;
+        }
+
+        /* Image Section */
+        /* General Section Styling */
+        .ai-training-section {
+            background-color: #FDFDFD;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .ai-training-header {
+            margin-bottom: 40px;
+        }
+
+        .ai-training-header h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1E0A3C;
+            margin-bottom: 10px;
+        }
+
+        .ai-training-header p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .ai-training-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            /* Align text left within content boxes */
+        }
+
+        /* Text Section Styling */
+        .ai-training-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .task-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .task-box {
+            background-color: #F2F0FF;
+            padding: 20px;
+            border-radius: 10px;
+            color: #444;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .task-box.active {
+            background-color: #6A0DAD;
+            color: #FFF;
+        }
+
+        .task-box:hover {
+            background-color: #EAE4FF;
+        }
+
+        .cta p {
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .btn-view-opportunities {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1E0A3C;
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-view-opportunities:hover {
+            background-color: #6A0DAD;
+        }
+
+        /* Image Section */
+        .ai-training-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ai-training-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ai-training-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ai-training-image img {
+                max-width: 100%;
+            }
+
+            .task-boxes {
+                text-align: left;
+            }
+        }
+
+
+        /* Responsive Design */
+
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            background: #f0f4f8;
+            color: #333;
+            margin-top: 2rem;
+        }
+
+        /* Meet the Experts Section */
+        .experts-section {
+            text-align: center;
+            background-color: #FDFDFD;
+            padding: 60px 20px;
+        }
+
+        .experts-header h2 {
+            font-size: 32px;
+            color: #1E0A3C;
+            line-height: 1.4;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .highlight-text {
+            color: #00C48C;
+            /* Green text for highlighting */
+        }
+
+        /* Testimonials Container */
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            width: 300px;
+            background-color: #FFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-card p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-author img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .author-details strong {
+            font-size: 14px;
+            color: #1E0A3C;
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* CTA Section Styling */
+        .cta-section {
+            background: linear-gradient(135deg, #3C1053, #4C1D95);
+            /* Purple gradient */
+            color: #FFFFFF;
+            border-radius: 20px;
+            /* Rounded corners */
+            padding: 30px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 40px auto;
+            /* Center the section horizontally with margin */
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            /* Adjust on smaller screens */
+            padding: 10px 30px;
+        }
+
+        .cta-container h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            flex: 1;
+            /* Grow text container */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FFFFFF;
+            color: #3C1053;
+            /* Dark purple */
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #E5E5E5;
+            color: #4C1D95;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cta-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-container h2 {
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
+        }
+
+        /* AI Craft Section Styling */
+        .ai-craft-section {
+            background-color: #FDFDFD;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .ai-craft-header {
+            margin-bottom: 40px;
+        }
+
+        .ai-craft-header h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1E0A3C;
+            margin-bottom: 10px;
+        }
+
+        .ai-craft-header h2 .highlight {
+            color: #6A0DAD;
+        }
+
+        .ai-craft-header p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Content Layout */
+        .ai-craft-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Left Task Details */
+        .task-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .task-box {
+            background-color: #F2F0FF;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .task-box.active {
+            background-color: #b0adb3;
+            color: #FFF;
+        }
+
+        .task-box:hover {
+            background-color: #EAE4FF;
+        }
+
+        /* Right Image Section */
+        .task-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .task-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ai-craft-content {
+                flex-direction: column;
+            }
+
+            .task-image img {
+                max-width: 100%;
+            }
+        }
+
+        /* General FAQ Section Styling */
+        .faq-section {
+            padding: 60px 20px;
+            background-color: #FFF;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #1E0A3C;
+            margin-bottom: 30px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-top: 1px solid #E0E0E0;
+            padding: 20px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: #FAFAFA;
+        }
+
+        /* FAQ Question Styling */
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #1E0A3C;
+        }
+
+        .faq-number {
+            color: #6A0DAD;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .faq-title-text {
+            flex: 1;
+            font-size: 18px;
+        }
+
+        .toggle-icon {
+            font-size: 22px;
+            color: #6A0DAD;
+            font-weight: bold;
+        }
+
+        /* FAQ Answer Styling */
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* See All Button */
+        .see-all-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .see-all-btn {
+            background-color: #6A0DAD;
+            color: #FFF;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .see-all-btn:hover {
+            background-color: #4A078E;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+
+        </div>
+
+        <!-- Menu Icon (Hamburger) -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Right-Side Menu -->
+        <div class="right-menu" id="mobile-menu">
+            <a href="#">BLOG</a>
+            <a href="#">FAQ</a>
+            <div class="buttons">
+                <a href="#" class="btn btn-login">LOG IN</a>
+                <a href="#" class="btn btn-cta">VIEW OPPORTUNITIES</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Discover Insights Like Never Before</h1>
+        <p>Uncover patterns and trends to make smarter decisions with your data.</p>
+        <a href="#" class="btn">Get Started</a>
+    </section>
+    <section class="expertise-section">
+        <h2 class="expertise-title">Share your expertise and get paid<br> working where and when you want</h2>
+
+        <div class="expertise-container">
+            <!-- Card 1 -->
+            <div class="expertise-card">
+                <div class="expertise-image">
+                    <img src="images/share1.png" alt="Share your knowledge">
+                </div>
+                <h3>Share your knowledge</h3>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="expertise-card">
+                <div class="expertise-image">
+                    <img src="images/share2.png" alt="Connect with fellow experts">
+                </div>
+                <h3>Connect with fellow experts</h3>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="expertise-card">
+                <div class="expertise-image">
+                    <img src="images/share3.png" alt="Get paid on your terms">
+                </div>
+                <h3>Get paid on your terms</h3>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="community-container">
+            <h2 class="community-title">Join a community of innovators</h2>
+            <p class="community-subtitle">
+                Our AI trainers come from all backgrounds and have expertise in everything from organic chemistry to
+                creative writing.
+            </p>
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="community-card">
+                    <div class="icon-box">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Generalist</h3>
+                    <a href="#" class="learn-more">Learn more &rarr;</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="community-card">
+                    <div class="icon-box">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <h3>Math</h3>
+                    <a href="#" class="learn-more">Learn more &rarr;</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="community-card">
+                    <div class="icon-box">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Chemistry</h3>
+                    <a href="#" class="learn-more">Learn more &rarr;</a>
+                </div>
+                <!-- Card 4 -->
+                <div class="community-card">
+                    <div class="icon-box">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Law</h3>
+                    <a href="#" class="learn-more">Learn more &rarr;</a>
+                </div>
+                <!-- Card 5 -->
+                <div class="community-card">
+                    <div class="icon-box">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <h3>And 30+ other</h3>
+                    <a href="#" class="learn-more">Learn more &rarr;</a>
+                </div>
+            </div>
+            <div class="all-opportunities">
+                <a href="#" class="btn-opportunities">ALL OPPORTUNITIES &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ai-craft-section">
+        <div class="ai-craft-container">
+            <!-- Header Section -->
+            <div class="ai-craft-header">
+                <h2>Building great <span class="highlight">AI is a craft</span></h2>
+                <p>AI training is never boring. Create your account and try a sample task in your area of expertise</p>
+            </div>
+
+            <!-- Content Section -->
+            <div class="ai-craft-content">
+                <!-- Left Text Area -->
+                <div class="task-details">
+                    <div class="task-box active">
+                        <h3><i class="fas fa-medal"></i> Rating & ranking</h3>
+                        <p>Rating or ranking assignments ask contributors to identify the best model responses out of
+                            two or more options until the content meets high quality for review.</p>
+                    </div>
+                    <div class="task-box">
+                        <h3>Open rewrite</h3>
+                    </div>
+                    <div class="task-box">
+                        <h3>Multi-modal</h3>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="task-image">
+                    <img src="images/ai.png" alt="AI Craft Task">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experts-section">
+        <!-- Header Section -->
+        <div class="experts-header">
+            <h2>
+                <span class="highlight-text">Meet the experts helping</span> <br>
+                develop safe and beneficial AI<br>
+                across multiple disciplines
+            </h2>
+        </div>
+
+
+        <!-- Testimonial Cards -->
+        <div class="testimonial-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <p>The flexibility is absolutely amazing and I really enjoy it. It was a blessing having this kind of
+                    freedom for the first time.</p>
+                <div class="testimonial-author">
+                    <img src="images/profile.jpeg" alt="Martin M.">
+                    <div class="author-details">
+                        <strong>Martin M.</strong>
+                        <span>History</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <p>As an educator, you have to take an individual approach with each student. Training AI is engaging
+                    for me because I'm using that same creativity.</p>
+                <div class="testimonial-author">
+                    <img src="images/profile.jpeg" alt="Gabriela S.">
+                    <div class="author-details">
+                        <strong>Gabriela S.</strong>
+                        <span>Psychology & Education</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <p>The work itself is fun. I'm learning about such a broad variety of topics because every time you see
+                    a task, you learn something new. I just learned some cool Swiss recipes for apple fritters.</p>
+                <div class="testimonial-author">
+                    <img src="images/profile.jpeg" alt="Daliah B.">
+                    <div class="author-details">
+                        <strong>Daliah B.</strong>
+                        <span>German</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="faq-title">FAQs</h2>
+        <div class="faq-container">
+
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(1)">
+                    <span class="faq-number">01</span>
+                    <span class="faq-title-text">About Outlier</span>
+                    <span class="toggle-icon" id="icon-1">+</span>
+                </div>
+                <div class="faq-answer" id="faq-1">
+                    <p><strong>So what is Outlier?</strong><br>
+                        Outlier is a platform that connects subject matter experts to help build the world’s most
+                        advanced Generative AI.</p>
+                    <p>You will work on a variety of projects from generating training data in your discipline to
+                        advance these models to evaluating performance of models.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(2)">
+                    <span class="faq-number">02</span>
+                    <span class="faq-title-text">Getting started</span>
+                    <span class="toggle-icon" id="icon-2">+</span>
+                </div>
+                <div class="faq-answer" id="faq-2">
+                    <p><strong>What does the onboarding process look like?</strong><br>
+                        During onboarding, you will be added to a Squad of like-minded contributors...</p>
+                    <p><strong>Will I get paid for the onboarding process?</strong><br>
+                        You will be compensated when you successfully complete the onboarding process.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(3)">
+                    <span class="faq-number">03</span>
+                    <span class="faq-title-text">Qualifications</span>
+                    <span class="toggle-icon" id="icon-3">+</span>
+                </div>
+                <div class="faq-answer" id="faq-3">
+                    <p><strong>What qualifications do I need?</strong><br>
+                        Candidates should have deep expertise in the domains...</p>
+                    <p><strong>Can I bring some friends too?</strong><br>
+                        Of course! Everyone is welcome to apply.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(4)">
+                    <span class="faq-number">04</span>
+                    <span class="faq-title-text">Pay</span>
+                    <span class="toggle-icon" id="icon-4">+</span>
+                </div>
+                <div class="faq-answer" id="faq-4">
+                    <p><strong>How much will I be paid?</strong><br>
+                        Competitive rates are set based on your domain...</p>
+                    <p><strong>How will I be paid?</strong><br>
+                        You will be paid out weekly via PayPal or AirTM.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(5)">
+                    <span class="faq-number">05</span>
+                    <span class="faq-title-text">Hours</span>
+                    <span class="toggle-icon" id="icon-5">+</span>
+                </div>
+                <div class="faq-answer" id="faq-5">
+                    <p><strong>How much time should I expect to work?</strong><br>
+                        Outlier is very flexible. Work as much or as little as you want!</p>
+                    <p><strong>How long will this opportunity last?</strong><br>
+                        Projects vary in length, and contributors can work on additional projects after completion.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- See All Button -->
+        <div class="see-all-container">
+            <button class="see-all-btn">SEE ALL</button>
+        </div>
+    </section>
+
+
+
+
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Join us in making a lasting impact on AI</h2>
+            <a href="#" class="cta-button">VIEW OPPORTUNITIES</a>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Outlier-Like. All rights reserved.</p>
+    </footer>
+</body>
+<script>function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('active');
+    }
+</script>
+<script>
+    function toggleFaq(id) {
+        const answer = document.getElementById(`faq-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.textContent = "+";
+        } else {
+            answer.style.display = "block";
+            icon.textContent = "-";
+        }
+    }
+</script>
+
+</html>
