@@ -25,12 +25,12 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px !important;
+    padding: 15px 40px;
     /* background-color: #FFF; */
     background: linear-gradient(135deg, #f0f4f8, #d5e0ed);
 
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    position: fixed !important;
+    /* position: fixed !important; */
     top: 0;
     left: 0;
     right: 0;
@@ -47,6 +47,16 @@ a:hover {
 .navbar .logo img {
     height: 30px;
     margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 30px;
+    }
+
+    .navbar .logo img {
+        height: 25px;
+    }
 }
 
 /* Menu Icon (Hamburger) */
@@ -163,24 +173,24 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 620px;
     text-align: center;
     background: linear-gradient(135deg, #f0f4f8, #d5e0ed);
     padding: 0 20px;
 }
 
 .hero-contents {
-    display: flex !important; 
-    flex-direction: row !important;
-    justify-content: center !important; 
-    align-items: center !important;
-    gap: 20px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .hero-img {
-    margin: 20px !important; 
-    border-radius: 30px !important;
-    width: 90% !important;
+    /* margin: 20px;  */
+    border-radius: 30px;
+    width: 90%;
 }
 
 .hero h1 {
@@ -238,9 +248,9 @@ a:hover {
         flex-direction: column-reverse !important;
     }
 
-    .hero-img {
-        width: 100% !important;
-    }
+    /* .hero-img {
+        width: 100%;
+    } */
 
     .hero h1 {
         font-size: 2.5rem;
@@ -288,9 +298,12 @@ a:hover {
     flex: 1 1 calc(33.33% - 20px);
     /* Three cards in a row */
     max-width: 400px;
+    min-height: 180px;
     text-align: center;
     padding: 20px;
     transition: transform 0.3s ease-in-out;
+    background-color: #f0f4f8;
+    border-radius: 20px;
 }
 
 .expertise-card:hover {
@@ -303,6 +316,11 @@ a:hover {
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     /* Subtle shadow */
+    margin-bottom: 20px;
+}
+
+.expertise-card i {
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
@@ -331,8 +349,8 @@ a:hover {
 /* Footer */
 /* Community Section */
 .community-section {
-    padding-top: 150px !important;
-    padding-bottom: 150px !important;
+    padding-top: 70px !important;
+    padding-bottom: 50px !important;
     background-color: #16101a;
     color: #ffffff;
     text-align: center;
@@ -344,14 +362,15 @@ a:hover {
 }
 
 .community-container {
-    max-width: 1200px;
+    width: 100%;
+    /* max-width: 1200px; */
     margin: 0 auto;
 }
 
 .community-title {
     font-size: 48px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 70px;
 }
 
 .community-subtitle {
