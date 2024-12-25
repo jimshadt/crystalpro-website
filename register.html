@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .outer {
+            background: #16101a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            /* background-color: #FFF; */
+            background: linear-gradient(135deg, #f0f4f8, #d5e0ed);
+
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            /* position: fixed !important; */
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 30px;
+            }
+
+            .navbar .logo img {
+                height: 25px;
+            }
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .form-field {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 15px;
+            padding-left: 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-field input:focus {
+            border-color: #b09cf1;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-field i {
+            position: absolute;
+            left: 15px;
+            top: 42px;
+            color: #7f8c8d;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #b09cf1;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .error {
+            display: none;
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 15px;
+            text-align: center;
+            padding: 10px;
+            background: #fde8e8;
+            border-radius: 8px;
+        }
+
+        .success-animation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .form-field input {
+                padding: 12px;
+                padding-left: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #16101a;">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="images/logo.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+    <div class="outer">
+        <div class="form-container">
+            <!-- <h2>Apply Now</h2> -->
+            <form id="registrationForm">
+                <div class="form-field">
+                    <label for="name">Full Name</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-field">
+                    <label for="mobile">Mobile Number</label>
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="mobile" required placeholder="Enter your mobile number">
+                </div>
+                <div class="form-field">
+                    <label for="email">Email Address</label>
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                <button type="submit">
+                    <span>Continue</span>
+                </button>
+                <div id="errorMessage" class="error"></div>
+            </form>
+        </div>
+        <div id="successMessage" class="success-animation">
+            Registration successful! ✨
+        </div>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'eng';
+            console.log(lang);
+
+            document.getElementById('registrationForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const errorMessage = document.getElementById('errorMessage');
+                const successMessage = document.getElementById('successMessage');
+                const submitButton = this.querySelector('button');
+
+                // Replace with your deployed Google Apps Script URL
+                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw55a8KGGwT7tgMKCnThbDB4Mnr3MygvnzBMyxHwlFDKH8Q6-VgfsKkedynd1uk0mMv/exec';
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    mobile: document.getElementById('mobile').value,
+                    email: document.getElementById('email').value
+                };
+
+                try {
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    submitButton.disabled = true;
+
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    if (response) {
+                        // successMessage.style.display = 'block';
+                        // setTimeout(() => {
+                        //     successMessage.style.display = 'none';
+                        // }, 3000);
+
+                        // this.reset();
+
+
+                        switch (lang) {
+                            case 'eng':
+                                window.open("https://app.outlier.ai/expert/opportunities/4421906005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'mal':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423485005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'hin':
+                                window.open("https://app.outlier.ai/expert/opportunities/4421840005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'tam':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423311005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'ara':
+                                window.open("https://app.outlier.ai/expert/opportunities/4421905005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'guj':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423299005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'kan':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423301005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'mar':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423486005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'pan':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423478005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'tel':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423454005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            case 'urd':
+                                window.open("https://app.outlier.ai/expert/opportunities/4423487005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                            default:
+                                window.open("https://app.outlier.ai/expert/opportunities/4421906005?utm_source=referral&referring_user=174eb778f99f01ccb7cceace717dfa964eb88581452d392f1782458670baa5fcf8def9504495f84f7f3ca289d1fe9ae7");
+                                break;
+                        }
+                    }
+
+                } catch (error) {
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = 'Error submitting form. Please try again.';
+                    console.error('Error:', error);
+                } finally {
+                    submitButton.innerHTML = '<span>Register</span>';
+                    submitButton.disabled = false;
+                }
+            });
+
+            // Add input focus effects
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.querySelector('i').style.color = '#b09cf1';
+                });
+
+                input.addEventListener('blur', function () {
+                    this.parentElement.querySelector('i').style.color = '#7f8c8d';
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>
